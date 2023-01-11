@@ -10,7 +10,7 @@
 <body>
         <h1 id="coffee-header">Coffee!</h1>
 
-        <form>
+        <form >
             <label for="roast-selection"></label>
             <select id="roast-selection">
                 <option value="all" selected>All</option>
@@ -21,12 +21,12 @@
 
                 <option value="dark">Dark</option>
             </select>
-            <input type="text" id="coffee-name">
+            <input type="text" id="coffee-name-search">
 
             <input id="submit" type="submit" class="input-button">
         </form>
-
-            <!-- <select id="new-roast">
+            <form>
+            <select id="new-roast">
                 <option value="blank" selected hidden></option>
 
                 <option value="light">Light</option>
@@ -36,11 +36,9 @@
                 <option value="dark">Dark</option>
             </select>
 
-            <input type="text" name="new-coffee-name" id="new-coffee-name">
-
-            <input type="text" name="new-coffee-roast" id="new-coffee-roast">
-
-            <input type="submit" id="submit-new-coffee" class="input-button"> -->
+            <input type="text" id="new-coffee-name">
+            <input type="submit" id="submit-new-coffee" class="input-button">
+            </form>
 
             <div id="coffees"></div>
 

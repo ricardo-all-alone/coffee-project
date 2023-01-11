@@ -1,49 +1,7 @@
 (function () {
     "use strict"
 
-    function renderCoffee(coffee) {
-        let html = '<div class="coffee">';
-        html += '<div hidden>' + coffee.id + '</div>';
-        html += '<h1>' + coffee.name + '</div>';
-        html += '<p>' + coffee.roast + '</p>';
-        html += '</div>';
-        html += '<br>'
-        return html;
-    }
 
-
-
-    function renderCoffees(coffees) {
-        let html = '';
-        for (var i = coffees.length - 1; i >= 0; i--) {
-            html += renderCoffee(coffees[i]);
-        }
-        return html;
-    }
-
-
-    function updateCoffees(e) {
-        e.preventDefault(); // don't submit the form, we just want to update the data
-        let selectedRoast = roastSelection.value;
-        console.log(selectedRoast);
-        let filteredCoffees = [];
-        if (roastSelection.value === 'all') {
-        div.innerHTML = renderCoffees(coffees);
-        } else {
-            coffees.forEach(function (coffee) {
-                if (coffee.roast === selectedRoast) {
-                    filteredCoffees.push(coffee);
-                }
-            });
-        }
-        div.innerHTML = renderCoffees(filteredCoffees);
-
-    }
-
-    function DoSubmit(sel)
-{
-     if(sel.val()!='0') this.form.submit();
-}
 
     // from http://www.ncausa.org/About-Coffee/Coffee-Roasts-Guide
     let coffees = [
@@ -139,30 +97,81 @@
     let div = document.querySelector('#coffees');
     let submitButton = document.querySelector('#submit');
     let roastSelection = document.querySelector('#roast-selection');
-
+    let coffeeName = document.querySelector('#coffee-name-search');
+    let newCoffee = document.querySelector('#submit-new-coffee');
+    let newCoffeeRoast = document.querySelector('#new-roast');
+    let newCoffeeName = document.querySelector('#new-coffee-name');
     div.innerHTML = renderCoffees(coffees);
 
-    submitButton.addEventListener('click', updateCoffees);
+    roastSelection.addEventListener('input', updateCoffees);
+    coffeeName.addEventListener('input', searchList);
+    newCoffee.addEventListener('click', createNewCoffee);
+
+
+function createNewCoffee() {
+    let newRoast = newCoffeeRoast.value;
+    let newName = newCoffeeName.value;
+    let newCoffee = {
+        id: (coffees.length + 1), 
+        name: newName,
+        roast: newRoast
+    }
+    coffees.push(newCoffee);
+}
+
+function renderCoffee(coffee) {
+    let html = '<div class="coffee">';
+    html += '<div hidden>' + coffee.id + '</div>';
+    html += '<h1>' + coffee.name + '</div>';
+    html += '<p>' + coffee.roast + '</p>';
+    html += '</div>';
+    html += '<br>'
+    return html;
+}
 
 
 
+function renderCoffees(coffees) {
+    let html = '';
+    for (var i = coffees.length - 1; i >= 0; i--) {
+        html += renderCoffee(coffees[i]);
+    }
+    return html;
+}
 
 
+function updateCoffees(e) {
+    e.preventDefault();
+    let selectedRoast = roastSelection.value;
+    let filteredCoffees = [];
+    console.log(selectedRoast);
+    coffees.forEach(function (coffee) {
+        if (selectedRoast === 'all') {
+            filteredCoffees.push(coffee);
+        }
+        else if(coffee.roast === selectedRoast) {
+            filteredCoffees.push(coffee);
+        }
+    });
+    div.innerHTML = renderCoffees(filteredCoffees);
+}
 
+
+function searchList(e) {
+    e.preventDefault()
+    let userSearch = coffeeName.value;
+    let searchResults = [];
+    let userSearchLower = userSearch.toLowerCase()
+
+    coffees.forEach(function (coffee) {
+        if(coffee.name.toLowerCase().startsWith(userSearchLower)) {
+            searchResults.push(coffee)
+        }
+    });
+    div.innerHTML = renderCoffees(searchResults);
+
+}
 
 
 
 })();
-
-
-// function createBooks(title, author) {
-//     let authorName = author.split(' ')
-//     let newBook = {
-//         title: title,
-//         author: {
-//             firstName: authorName[0],
-//             lastName: (authorName[1] === undefined) ? authorName[1] = '' : authorName[1] = authorName[1]
-//         }
-//     }
-//     books.push(newBook)
-// }
