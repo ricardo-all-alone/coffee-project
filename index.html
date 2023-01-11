@@ -8,38 +8,44 @@
 </head>
 
 <body>
-    <div class="page-wrapper">
-
         <h1 id="coffee-header">Coffee!</h1>
 
-        <form>
-            <label for="roast-selection"></label>
+        <!-- <form> -->
+            <!-- <label for="roast-selection"></label> -->
             <select id="roast-selection">
+                <option value="all" selected>All</option>
 
-                <option>light</option>
+                <option value="light">Light</option>
 
-                <option>medium</option>
+                <option value="medium">Medium</option>
 
-                <option>dark</option>
+                <option value="dark">Dark</option>
             </select>
-            <input id="submit" type="submit" />
-        </form>
+            <input type="text" id="coffee-name">
 
-        <table>
-            <thead>
-                <tr>
-                    <th>ID</th>
+            <input id="submit" type="submit" class="input-button">
+        <!-- </form> -->
 
-                    <th>NAME</th>
+            <!-- <select id="new-roast">
+                <option value="blank" selected hidden></option>
 
-                    <th>ROAST</th>
-                </tr>
-            </thead>
-            <tbody id="coffees"></tbody>
-        </table>
+                <option value="light">Light</option>
+
+                <option value="medium">Medium</option>
+
+                <option value="dark">Dark</option>
+            </select>
+
+            <input type="text" name="new-coffee-name" id="new-coffee-name">
+
+            <input type="text" name="new-coffee-roast" id="new-coffee-roast">
+
+            <input type="submit" id="submit-new-coffee" class="input-button"> -->
+
+            <div id="coffees"></div>
 
         <script src="main.js"></script>
-    </div>
+    
 </body>
 
 </html>
