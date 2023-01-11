@@ -92,8 +92,7 @@
 
     ];
 
-
-
+    // globalVariables
     let div = document.querySelector('#coffees');
     let submitButton = document.querySelector('#submit');
     let roastSelection = document.querySelector('#roast-selection');
@@ -103,11 +102,13 @@
     let newCoffeeName = document.querySelector('#new-coffee-name');
     div.innerHTML = renderCoffees(coffees);
 
+    console.log(coffees) //Delete before final push!!!!!
+    // listeners
     roastSelection.addEventListener('input', updateCoffees);
     coffeeName.addEventListener('input', searchList);
     newCoffee.addEventListener('click', createNewCoffee);
 
-
+// function for user to add New Coffee
 function createNewCoffee() {
     let newRoast = newCoffeeRoast.value;
     let newName = newCoffeeName.value;
@@ -117,20 +118,23 @@ function createNewCoffee() {
         roast: newRoast
     }
     coffees.push(newCoffee);
+    console.log(coffees) //Delete before final push!!!!!
 }
 
+// function that creates div with object info
 function renderCoffee(coffee) {
     let html = '<div class="coffee">';
+    html += '<div class="d-flex justify-content-end">';
     html += '<div hidden>' + coffee.id + '</div>';
-    html += '<h1>' + coffee.name + '</div>';
-    html += '<p>' + coffee.roast + '</p>';
+    html += '<h1 calss="">' + coffee.name + '</div>';
+    html += '<p calss="">' + coffee.roast + '</p>';
     html += '</div>';
-    html += '<br>'
+    html += '</div>';
     return html;
 }
 
 
-
+// function that renders all coffees
 function renderCoffees(coffees) {
     let html = '';
     for (var i = coffees.length - 1; i >= 0; i--) {
@@ -139,12 +143,11 @@ function renderCoffees(coffees) {
     return html;
 }
 
-
+// function that updates page based on roast
 function updateCoffees(e) {
     e.preventDefault();
     let selectedRoast = roastSelection.value;
     let filteredCoffees = [];
-    console.log(selectedRoast);
     coffees.forEach(function (coffee) {
         if (selectedRoast === 'all') {
             filteredCoffees.push(coffee);
@@ -156,7 +159,7 @@ function updateCoffees(e) {
     div.innerHTML = renderCoffees(filteredCoffees);
 }
 
-
+// function that updates page based on search
 function searchList(e) {
     e.preventDefault()
     let userSearch = coffeeName.value;
@@ -169,9 +172,6 @@ function searchList(e) {
         }
     });
     div.innerHTML = renderCoffees(searchResults);
-
 }
-
-
 
 })();
