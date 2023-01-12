@@ -3,12 +3,10 @@
 
     // function that creates div with object info
     function renderCoffee(coffee) {
-        let html = '<div class="coffee">';
+        let html = '<div class="coffee col-6 d-flex flex-wrap align-items-baseline ps-md-4">';
         html += '<div hidden>' + coffee.id + '</div>';
-        html += '<div class="coffee-text">';
-        html += '<h1>' + coffee.name + '</h1>';
-        html += '<p>' + coffee.roast + '</p>';
-        html += '</div>';
+        html += '<h1 class="text-light fs-4">' + coffee.name + '</h1>';
+        html += '<p class="ms-md-2 mb-0 fs-6 text-secondary">' + coffee.roast + '</p>';
         html += '</div>';
 
         return html;
