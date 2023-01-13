@@ -134,7 +134,7 @@
         let userSearchLower = userSearch.toLowerCase();
         coffees.forEach(function (coffee) {
             if (coffee.name.toLowerCase().startsWith(userSearchLower)) {
-                searchResults.push(coffee)
+                searchResults.push(coffee);
             }
         });
         div.innerHTML = renderCoffees(searchResults);
@@ -145,6 +145,7 @@
         e.preventDefault();
         let newRoast = newCoffeeRoast.value;
         let newName = newCoffeeName.value;
+        newName = upperCase(newName);
         let newCoffee = {
             id: (coffees.length + 1),
             name: newName,
@@ -152,9 +153,18 @@
         }
         coffees.push(newCoffee);
         newCoffeeRoast.value = 'blank';
-        newCoffeeName.value = ''
+        newCoffeeName.value = '';
+        div.innerHTML = renderCoffees(coffees);
     }
 
+    // capitalizes first letter
+function upperCase(input) {
+    input = input.split('');
+    input[0] = input[0].toUpperCase();
+   input = input.join('');
+   return input;
+}
+  
     // globalVariables
     let div = document.querySelector('#coffees');
     let roastSelection = document.querySelector('#roast-selection');
@@ -163,8 +173,6 @@
     let newCoffeeRoast = document.querySelector('#new-roast');
     let newCoffeeName = document.querySelector('#new-coffee-name');
     div.innerHTML = renderCoffees(coffees);
-
-
 
     // listeners
     roastSelection.addEventListener('input', updateCoffees);
