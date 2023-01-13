@@ -1,22 +1,25 @@
-.buttons {
-    background-color:#874a1f;
-    color: white;
-    border-radius: 8px;
-}
-#page-wrapper{
-    background-image: url(./imgs/page-background.png); 
+#page-wrapper {
+    background-image: url(./imgs/page-background.png);
     background-repeat: no-repeat;
     background-size: cover;
+    background-position: center, center;
     height: 100vh;
     width: 100vw;
 }
 
 #coffee-header {
-    color: #894616;
+    color: #844e28;
+    font-size: 3rem;
 }
 
 #form {
-border: solid white 1px;
-border-radius: 5px;
+    border: solid white 1px;
+    border-radius: 5px;
 
+}
+
+.buttons {
+    background-color: #874a1f;
+    color: white;
+    border-radius: 8px;
 }

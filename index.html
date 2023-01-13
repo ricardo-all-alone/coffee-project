@@ -13,15 +13,16 @@
 
 <body>
     <div id="page-wrapper">
-    <h1 class="text-center mb-5" id="coffee-header">Coffee!</h1>
-    <div class=""></div>
-    <div id="line-break"></div>
+        <h1 class="text-center mb--md-5" id="coffee-header">Coffee!</h1>
         <div class="row">
             <div class="col-12 col-md-8 row align-content-start" id="coffees"></div>
-            <div class="col-12 col-md-4" id="form">
+
+            <div class="col-12 col-md-4 mt-3 w-60 w-md-100" id="form">
                 <div class="my-md-4">
                     <form class="d-flex flex-wrap justify-content-center align-items-center">
+
                         <div class="text-start w-100 text-light">Roast</div>
+
                         <select id="roast-selection" class="w-100">
                             <option value="all" selected>All</option>
 
@@ -31,17 +32,21 @@
 
                             <option value="dark">Dark</option>
                         </select>
+
                         <div class="mt-md-3 text-start w-100 text-light">Coffee Name</div>
+
                         <input type="text" id="coffee-name-search" class="w-100">
 
-                        <input id="submit" type="submit" class="buttons w-100 mt-md-3">
+                        <input id="submit" type="submit" class="buttons w-80 w-100 mt-md-3">
                     </form>
                 </div>
                 <hr>
                 <div class="mt-md-4">
-                    <h3 class="text-light text-center">Add A New Coffee</h3>
+                    <h3 class="text-light text-center m-2">Add A New Coffee</h3>
                     <form class="d-flex flex-wrap justify-content-center align-items-center" id="new-coffee-form">
+
                         <p class="text-start w-100 text-light mb-0">Roast</p>
+
                         <select id="new-roast" class="w-100">
                             <option value="blank" selected hidden></option>
 
@@ -51,7 +56,9 @@
 
                             <option value="dark">Dark</option>
                         </select>
+
                         <p class="text-start w-100 text-light mt-md-4 mb-0">Coffee Name</p>
+
                         <input type="text" id="new-coffee-name" class="w-100 mb-md-4">
 
                         <input type="submit" value="Add Coffee" class="buttons w-100 mb-md-4">
